@@ -30,16 +30,14 @@ class ChatBot(BotPlugin):
         """
         yield("Bip bip!")
 
-    @re_botcmd(pattern=r"(^| )andar [0-9]+( |$)")
+    @re_botcmd(pattern=r"andar [0-9]+")
     def andar(self, msg, match):
         """
         Aciona a buzina do Arduino.
         """
         mensagem = {}
         mensagem['comando'] = "andar"
-        quantidade = match.group().split(' ')[1]
+        quantidade = match.group().split(' ')[0]
         if quantidade:
             mensagem['valor'] = quantidade
             yield(mensagem)
-        else:
-            yield("{}")
