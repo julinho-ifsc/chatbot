@@ -9,14 +9,14 @@ route_clients = RouteClients(
 
 class Comandos(BotPlugin):
     """
-    Comandos da Julinha Marvi·e.
+    Comandos do Julinho Marvi.E.
     """
 
     @botcmd
     def teste(self, msg, args):
         yield(route_clients.get_routes())
-
-    
+        
+        
     @botcmd
     def rumo(self, _, args):
         destino = [
@@ -105,20 +105,17 @@ class Comandos(BotPlugin):
             ]
 
         """
-        Envia a Julinha para a rota inserida. Utilize como "Julinha rumo ___________".
+        Envia o Julinho para a rota inserida. Utilize como "Julinho, rumo ___________".
         """
         mensagem = {}
         mensagem['rota'] = args
         print(json.dumps(mensagem))
         if(args in destino):
-            yield("Siga-me até " + args + ". Obrigada.:relaxed:")
+            yield("Siga-me até " + args + ". Obrigado!:sunglasses:")
         else:
             yield("Desculpe, esta rota não está disponível ou não existe.:white_frowning_face:")
-
-
     
 #funções
-
 
     @botcmd
     def buzinar(self, msg, args):
@@ -130,38 +127,38 @@ class Comandos(BotPlugin):
     @botcmd
     def desligar(self, msg, args):
         """
-        Desliga a Julinha.
+        Desliga o Julinho.
         """
-        yield("Foi um prazer trabalhar hoje! Beijo, me liga!:kissing_heart:")
+        yield("Adeus, mundo cruel!:skull:")
         self.change_presence(AWAY)
 
     @botcmd
     def direita(self, msg, args):
         """
-        Manda a Julinha virar à direita.
+        Manda o Julinho virar à direita.
         """
-        yield("Virando à direita!")
+        yield("Virando à estibordo!:arrow_right:")
 
     @botcmd
     def esquerda(self, msg, args):
         """
-        Manda a Julinha virar à esquerda.
+        Manda o Julinho virar à esquerda.
         """
-        yield("Virando à esquerda!")
+        yield("Virando à bombordo!:arrow_left:")
     
     @botcmd
     def frente(self, msg, args):
         """
-        Manda a Julinha ir à frente.
+        Manda o Julinho ir à frente.
         """
-        yield("Para frente e avante!")
+        yield("Para frente e avante!:arrow_up:")
 
     @botcmd
     def ligar(self, msg, args):
         """
-        Liga a Julinha.
+        Liga o Julinho.
         """
-        yield("Julinha às suas ordens, capitão!")
+        yield("Sim, senhor SENHOR!")
         self.change_presence(ONLINE)
       
     @botcmd
@@ -174,15 +171,15 @@ class Comandos(BotPlugin):
     @botcmd
     def tras(self, msg, args):
         """
-        Manda a Julinha para trás.
+        Manda o Julinho ir para trás.
         """
-        yield("Dando ré!")
+        yield("Dando ré!:arrow_down:")
 
 
     @re_botcmd(pattern=r"andar [0-9]+")
     def andar(self, msg, match):
         """
-        Manda a Julinha andar x.
+        Manda o Julinho andar X.
         """
         mensagem = {}
         mensagem['comando'] = "andar"
@@ -190,7 +187,4 @@ class Comandos(BotPlugin):
         if quantidade:
             mensagem['valor'] = quantidade
             yield(mensagem)
-
-#ROTA
-
    
