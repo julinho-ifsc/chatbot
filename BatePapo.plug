@@ -3,7 +3,7 @@ name = BatePapo
 module = BatePapo
 
 [Documentation]
-description = Conversas no chat com a Julinha Marvi-e.
+description = Conversas no chat com o Julinho Marvi.E.
 
 [Python]
 version = 3
