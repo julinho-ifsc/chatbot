@@ -1,0 +1,10 @@
+[Core]
+name = BatePapo
+module = BatePapo
+
+[Documentation]
+description = Conversas no chat com a Julinha Marvi-e.
+
+[Python]
+version = 3
+

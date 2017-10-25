@@ -1,0 +1,9 @@
+[Core]
+Name = Comandos
+Module = Comandos
+
+[Documentation]
+Description = Comandos da Julinha Marvi-e.
+
+[Python]
+Version = 3
