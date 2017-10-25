@@ -4,41 +4,41 @@ from errbot import BotPlugin, botcmd, arg_botcmd, webhook, re_botcmd
 
 class BatePapo(BotPlugin):
     """
-    Conversas no chat com a Julinha Marvi-e.
+    Conversas no chat com o Julinho Marvi.E.
     """
  
     @botcmd
     def duvidei(self, msg, args):
         """
-        Resposta Julinha à sua descrença.
+        Resposta do Julinho à sua descrença.
         """
-        yield("Duvidando? De mim? Que audácia!:rage:")
+        yield("Duvidando? De mim? Que audácia!")
 
     @botcmd
     def like(self, msg, args):
         """
-        Pede a Julinha um like.
+        Pede ao Julinho um like.
         """
         yield(":thumbsup_all:")
 
-
-    @re_botcmd(pattern=r"quero (uma|um) (bolacha|biscoito)?")
+  @re_botcmd(pattern=r"posso ganhar (uma|um) (bolacha|biscoito), por favor?")
     def biscoito(self, msg, match):
         """
-        Pede por um biscoito/bolacha para a Julinha.
+        Pede por um biscoito/bolacha para o Julinho.
         """
-        yield("Seja educado, {}!").format(msg.frm)
+        yield("Tome aqui, {}!").format(msg.frm)
+        yield(":cookie:")
     
-    @re_botcmd(pattern=r"[cad(e|ê)|e] o (j|J)ulinho?")
-    def julinho(self, msg, match):
+    @re_botcmd(pattern=r"[cad(e|ê)|e] a (j|J)ulinha?")
+    def julinha(self, msg, match):
         """
-        Pergunta à Julinha sobre seu irmão.
+        Pergunta ao Julinho sobre sua irmã.
         """
-        yield("Está fazendo bip bip por aí...:robot_face:")
-        yield("Mas você já procurou na portaria?")
+        yield("Está fazendo uiuu uiuu por aí...:robot_face:")
+        yield("Mas você já procurou na biblioteca?")
 
     @re_botcmd(pattern=r"e nessa loucura?")
-    def evidencia(self, msg, args):
+    def evidencias(self, msg, args):
         """
         As evidências de uma paixão.
         """
@@ -48,5 +48,6 @@ class BatePapo(BotPlugin):
         yield("_Mas pra que viver fingindo_:microphone::notes:")
         yield("_Se eu não posso enganar meu coração..._:microphone::notes:")
         yield("_Eu sei que te amo!_:microphone::notes:")
-        yield("Agora é com você!")
+        yield("Agora é com você, {}!").format(msg.frm)
+        
         
