@@ -1,9 +1,13 @@
 [Core]
 Name = Comandos
 Module = Comandos
+#DependsOn =
 
 [Documentation]
+Author = Ederson Torresini
+Version = 2.2
 Description = Comandos do Julinho Marvi.E.
+Website = http://www.marvietech.com.br/
 
 [Python]
 Version = 3
