@@ -1,10 +1,13 @@
 [Core]
-name = BatePapo
-module = BatePapo
+Name = BatePapo
+Module = BatePapo
+#DependsOn =
 
 [Documentation]
-description = Conversas no chat com o Julinho Marvi.E.
+Author = Ederson Torresini
+Version = 2.2
+Description = Conversas no chat com o Julinho Marvi.E.
+Website = http://www.marvietech.com.br/
 
 [Python]
-version = 3
-
+Version = 3
