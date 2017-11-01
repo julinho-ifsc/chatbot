@@ -5,7 +5,7 @@ Module = Comandos
 [Documentation]
 Author = Ederson Torresini
 Version = 2.2
-Description = Conversas no chat com o Julinho Marvi·E.
+Description = Comandos do Julinho Marvi·E.
 Website = https://marvietech.com.br/
 
 [Python]
