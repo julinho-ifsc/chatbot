@@ -1,6 +1,56 @@
-import re, json, os
+import re, json, os, datetime, requests, jwt
 from errbot import BotPlugin, botcmd, arg_botcmd, webhook, re_botcmd, ONLINE, AWAY
 from client import RouteClients
+
+class RouteClients():
+    def __init__(self, base_url, client_id):
+        self.base_url = base_url
+        self.params = self.get_params(client_id)
+        self.headers = self.get_headers()
+
+    def get_routes(self):
+        response = requests.get(
+            self.base_url + '/routes',
+            headers=self.headers,
+            params=self.params
+        )
+        return response.json()
+
+    def status(self, message):
+        response = requests.post(
+            self.base_url + '/status',
+            json=message,
+            headers=self.headers,
+            params=self.params
+        )
+        return response.json()
+
+    def walk(self, message):
+        response = requests.post(
+            self.base_url + '/walk',
+            json=message,
+            headers=self.headers,
+            params=self.params
+        )
+        return response.json()
+
+    def get_params(self, client_id):
+        return {'client_id': client_id}
+
+    def get_headers(self):
+        token = self.get_token()
+        return {'Authorization': 'Bearer ' + token.decode('utf-8')}
+
+    def get_token(self):
+        key = self.get_key()
+        expiration = datetime.datetime.utcnow() + datetime.timedelta(seconds=7200)
+        body = {'exp': expiration}
+        return jwt.encode(body, key, algorithm='RS256')
+
+    def get_key(self):
+        path = os.getenv('KEY_PATH', '/home/ubuntu/workspace/julinha/private.key')
+        key_file = open(path, 'r')
+        return key_file.read()
 
 route_clients = RouteClients(
     base_url='http://nuvem.sj.ifsc.edu.br:18080',
@@ -15,8 +65,8 @@ class Comandos(BotPlugin):
     @botcmd
     def teste(self, msg, args):
         yield(route_clients.get_routes())
-        
-        
+
+
     @botcmd
     def rumo(self, _, args):
         destino = [
@@ -115,8 +165,6 @@ class Comandos(BotPlugin):
             yield("Siga-me " + args + ". Obrigado!:sunglasses:")
         else:
             yield("Desculpe, esta rota não está disponível ou não existe.:white_frowning_face:")
-    
-#funções
 
     @botcmd
     def buzinar(self, msg, args):
@@ -146,7 +194,7 @@ class Comandos(BotPlugin):
         Manda o Julinho virar à esquerda.
         """
         yield("Virando à bombordo!:arrow_left:")
-    
+
     @botcmd
     def frente(self, msg, args):
         """
@@ -161,7 +209,7 @@ class Comandos(BotPlugin):
         """
         yield("Sim, senhor SENHOR!")
         self.change_presence(ONLINE)
-      
+
     @botcmd
     def sirene(self, msg, args):
         """
@@ -188,4 +236,3 @@ class Comandos(BotPlugin):
         if quantidade:
             mensagem['valor'] = quantidade
             yield(mensagem)
-   
