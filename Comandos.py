@@ -47,7 +47,7 @@ class RouteClients():
         return jwt.encode(body, key, algorithm='RS256')
 
     def get_key(self):
-        path = os.getenv('KEY_PATH', '/home/ubuntu/workspace/julinha/private.key')
+        path = os.getenv('KEY_PATH', '/errbot/private.key')
         key_file = open(path, 'r')
         return key_file.read()
 
