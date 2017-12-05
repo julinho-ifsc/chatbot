@@ -53,7 +53,7 @@ class RouteClients():
 
 route_clients = RouteClients(
     base_url='http://nuvem.sj.ifsc.edu.br:18080',
-    client_id=2
+    client_id=1
 )
 
 class Comandos(BotPlugin):
