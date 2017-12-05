@@ -1,6 +1,6 @@
 [Core]
 Name = Comandos
-Module = comandos
+Module = Comandos
 
 [Documentation]
 Author = Ederson Torresini
