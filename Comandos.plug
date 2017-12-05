@@ -1,6 +1,6 @@
 [Core]
-Name = Comandos
-Module = Comandos
+Name = comandos
+Module = comandos
 
 [Documentation]
 Author = Ederson Torresini
@@ -10,3 +10,5 @@ Website = https://marvietech.com.br/
 
 [Python]
 Version = 3
+
+[Errbot]
