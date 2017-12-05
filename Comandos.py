@@ -1,6 +1,5 @@
 import re, json, os, datetime, requests, jwt
 from errbot import BotPlugin, botcmd, arg_botcmd, webhook, re_botcmd, ONLINE, AWAY
-from client import RouteClients
 
 class RouteClients():
     def __init__(self, base_url, client_id):
