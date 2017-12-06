@@ -5,12 +5,12 @@ class RouteClients():
     def __init__(self, base_url, client_id):
         self.base_url = base_url
         self.params = self.get_params(client_id)
-        self.headers = self.get_headers()
+        self.key = self.get_key()
 
     def get_routes(self):
         response = requests.get(
             self.base_url + '/routes',
-            headers=self.headers,
+            headers=self.get_headers(),
             params=self.params
         )
         return response.json()
@@ -19,7 +19,7 @@ class RouteClients():
         response = requests.post(
             self.base_url + '/status',
             json=message,
-            headers=self.headers,
+            headers=self.get_headers(),
             params=self.params
         )
         return response.json()
@@ -28,7 +28,7 @@ class RouteClients():
         response = requests.post(
             self.base_url + '/walk',
             json=message,
-            headers=self.headers,
+            headers=self.get_headers(),
             params=self.params
         )
         return response.json()
@@ -41,10 +41,9 @@ class RouteClients():
         return {'Authorization': 'Bearer ' + token.decode('utf-8')}
 
     def get_token(self):
-        key = self.get_key()
         expiration = datetime.datetime.utcnow() + datetime.timedelta(seconds=7200)
         body = {'exp': expiration}
-        return jwt.encode(body, key, algorithm='RS256')
+        return jwt.encode(body, self.key, algorithm='RS256')
 
     def get_key(self):
         path = os.getenv('KEY_PATH', '/errbot/private.key')
