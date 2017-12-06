@@ -74,7 +74,7 @@ class Comandos(BotPlugin):
             mensagem['route'] = args
             rota = route_clients.walk(mensagem)
             if rota['message'] == 'Route sent with success!':
-                yield("Siga-me até" + args + ". Valeu!")
+                yield("Siga-me até " + args + ". Valeu!")
             else:
                 yield("Desculpe, esta rota não está disponível ou não existe.")
         else:
