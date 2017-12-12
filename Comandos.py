@@ -2,10 +2,11 @@ import re, json, os, datetime, requests, jwt
 from errbot import BotPlugin, botcmd, arg_botcmd, webhook, re_botcmd, ONLINE, AWAY
 
 class RouteClients():
-    def __init__(self, base_url, client_id):
+    def __init__(self, base_url, client_id, robot):
         self.base_url = base_url
         self.params = self.get_params(client_id)
         self.key = self.get_key()
+        self.robot = robot
 
     def get_routes(self):
         response = requests.get(
@@ -16,6 +17,7 @@ class RouteClients():
         return response.json()
 
     def status(self, message):
+        message['robot'] = self.robot
         response = requests.post(
             self.base_url + '/status',
             json=message,
@@ -25,6 +27,7 @@ class RouteClients():
         return response.json()
 
     def walk(self, message):
+        message['robot'] = self.robot
         response = requests.post(
             self.base_url + '/walk',
             json=message,
@@ -52,7 +55,8 @@ class RouteClients():
 
 route_clients = RouteClients(
     base_url='http://nuvem.sj.ifsc.edu.br:18080',
-    client_id=2
+    client_id=2,
+    robot=os.getenv('ROBOT', 'julinho')
 )
 
 class Comandos(BotPlugin):
