@@ -1,2 +1,2 @@
-# chatbot
-Chat bot para controle remoto dos robôs.
+# marvie-bot
+Código para apresentação do Marvi-E bot.

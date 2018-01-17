@@ -1,0 +1,9 @@
+[Core]
+Name = Vernissage
+Module = Vernissage
+
+[Documentation]
+Description = Vernissage do Marvi-E
+
+[Python]
+Version = 3
